@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Articles</title>
+</head>
+<body>
+<h2>Articles</h2>
+<div>
+    <a href="/articles/sort/asc">Sort by Title (Asc)</a>
+    <a href="/articles/sort/desc">Sort by Title (Desc)</a>
+</div>
+<form method="get" action="/articles/search">
+    <label for="query">Search: </label>
+    <input type="text" id="query" name="query" required/>
+    <button type="submit">Search</button>
+</form>
+<div th:each="article : ${articles}">
+    <h3 th:text="${article.title}"></h3>
+    <p th:text="${article.content}"></p>
+</div>
+<form method="post" action="/articles">
+    <label for="title">Title: </label>
+    <input type="text" id="title" name="title" required/><br/>
+    <label for="content">Content: </label>
+    <textarea id="content" name="content" required></textarea><br/>
+    <button type="submit">Add Article</button>
+</form>
+</body>
+</html>
